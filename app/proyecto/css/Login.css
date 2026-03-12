@@ -1,0 +1,66 @@
+body {
+    background-image: url("../img/prueba.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.caja {
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden; /*esquinas redondeadas img */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin: 50px auto;
+    max-width: 1000px;
+    padding: 0;
+}
+
+/* Contenedor img */
+.col-img {
+    padding: 0;
+}
+
+.col-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*llena todo el espacio sin deformarse */
+    display: block;
+}
+
+
+.formLogIn {
+    padding: 3rem;
+    background: white;
+}
+
+.formLogIn h2 {
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.btn-primary {
+    border-radius: 30px !important;
+    background-color: #0d6efd;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+.btn-outline-primary {
+    border-radius: 30px !important;
+    width: 100%;
+    padding: 10px;
+}
+
+footer {
+    background-color: #002060;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
