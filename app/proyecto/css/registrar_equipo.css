@@ -1,0 +1,64 @@
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;   
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.registrarEquipo {
+    flex: 1;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: #aaaaaa !important;
+}
+nav.navbar.bg-dark {
+    background-color: #020202 !important;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.registrarEquipo .card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+    transition: all 0.3s ease;
+}
+.registrarEquipo .btn-primary {
+    border-radius: 30px;
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+footer {
+    background-color: #020202;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+footer p {
+    margin: 0; /* elimina el espacio extra */
+}
