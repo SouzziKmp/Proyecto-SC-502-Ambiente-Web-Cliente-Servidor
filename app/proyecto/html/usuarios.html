@@ -7,48 +7,69 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<main class="container mt-5">
-    <h1 class="text-center mb-4">Lista de Usuarios</h1>
+    <header>
+        <nav class="navbar bg-dark border-bottom border-body p-3" data-bs-theme="dark">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <h1 class="h4 text-white m-0">Sistema de prestamo de equipo</h1>
+                <ul id="nav-menu" class="d-flex align-items-center list-unstyled m-0 gap-3">
+                    <li><a href="#" class="nav-link text-white">Usuarios</a></li>
+                    <li><a href="#" class="nav-link text-white">Devoluciones</a></li>
+                    <li><a href="#" class="nav-link text-white">Equipos</a></li>
+                    <li><a href="#" class="nav-link text-white">Prestamos</a></li>
+                    <li class="dropdown">
+                        <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Logout <i class="bi bi-box-arrow-in-right"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <div class="d-flex justify-content-between mb-3">
-        <a href="registrar_usuario.html" class="btn btn-success">
-            <i class="bi bi-person-plus"></i> Registrar nuevo usuario
-        </a>
-        <input type="text" class="form-control w-25" placeholder="Buscar usuario...">
-    </div>
-
-    <div class="card shadow">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Correo Electronico</th>
-                            <th scope="col">Rol</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaUsuarios">
-                        <tr>
-                            <td>Jefry Goleath</td>
-                            <td>jgoleath60816@ufide.ac.cr</td>
-                            <td>Administrador</td>
-                            <td><span class="badge bg-success">Activo</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <main class="container mt-5">
+        <h1 class="text-center mb-4">Lista de Usuarios</h1>
+        <div class="d-flex justify-content-between mb-3">
+            <a href="registrar_usuario.html" class="btn btn-success">
+                <i class="bi bi-person-plus"></i> Registrar nuevo usuario
+            </a>
+            <input type="text" class="form-control w-25" placeholder="Buscar usuario...">
+        </div>
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Correo Electronico</th>
+                                <th scope="col">Rol</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaUsuarios">
+                            <tr>
+                                <td>Jefry Goleath</td>
+                                <td>jgoleath60816@ufide.ac.cr</td>
+                                <td>Administrador</td>
+                                <td><span class="badge bg-success">Activo</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-</main>
-<script src="js/usuarios.js"></script>
+    </main>
+    <script src="js/usuarios.js"></script>
+    <footer>
+        <p>&copy; 2026 Sistema de prestamo de equipos</p>
+    </footer>
 </body>
 </html>
