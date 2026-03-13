@@ -1,0 +1,13 @@
+.footer-custom {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 22px 0;
+    margin-top: 40px;
+}
+
+.footer-custom p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
