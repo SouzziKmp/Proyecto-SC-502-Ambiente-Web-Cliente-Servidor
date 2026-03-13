@@ -4,89 +4,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Préstamos</title>
+    <title>Mis Prestamos</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/styles.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
+    <header>
+        <nav class="navbar bg-dark border-bottom border-body p-3" data-bs-theme="dark">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <h1 class="h4 text-white m-0">Sistema de prestamo de equipo</h1>
 
-    <main class="container mt-5">
+                <ul id="nav-menu" class="d-flex align-items-center list-unstyled m-0 gap-3">
+                    <li><a href="usuarios.html" class="nav-link text-white">Usuarios</a></li>
+                    <li><a href="devoluciones.html" class="nav-link text-white">Devoluciones</a></li>
+                    <li><a href="equipos.html" class="nav-link text-white">Equipos</a></li>
+                    <li><a href="prestamo.html" class="nav-link text-white fw-bold">Prestamos</a></li>
 
-        <h1 class="text-center mb-4">Préstamos Activos</h1>
+                    <li class="dropdown">
+                        <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ingresar <i class="bi bi-box-arrow-in-right"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="registrar_usuario.html">
+                                    Crear cuenta <i class="bi bi-person-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="login.html">
+                                    Iniciar Sesion <i class="bi bi-door-open"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-        <div class="d-flex justify-content-between mb-3">
-            <a href="solicitar_prestamo.html" class="btn btn-success">
-                Nuevo préstamo
-            </a>
-
-            <input type="text" class="form-control w-25" placeholder="Buscar préstamo...">
-        </div>
-
-        <div class="card shadow">
-            <div class="card-body">
-
-                <div class="table-responsive">
-
-                    <table class="table table-striped table-bordered" style="table-layout: fixed;">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col" style="width: 25%;">Usuario</th>
-                                <th scope="col" style="width: 25%;">Equipo</th>
-                                <th scope="col" style="width: 20%;">Fecha préstamo</th>
-                                <th scope="col" style="width: 20%;">Fecha devolución</th>
-                                <th scope="col" style="width: 10%;">Estado</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Barquero Alvarado Pablo Cesar</td>
-                                <td>Laptop</td>
-                                <td>2026-03-10</td>
-                                <td>2026-03-15</td>
-                                <td>Activo</td>
-                            </tr>
-                            <tr>
-                                <td>Campos Pérez Steven Josué</td>
-                                <td>Tablet</td>
-                                <td>2026-03-08</td>
-                                <td>2026-03-12</td>
-                                <td>Activo</td>
-                            </tr>
-                            <tr>
-                                <td>Cuadra Quesada Maria del Sol</td>
-                                <td>Proyector</td>
-                                <td>2026-03-05</td>
-                                <td>2026-03-11</td>
-                                <td>Activo</td>
-                            </tr>
-                            <tr>
-                                <td>Goleath Arrieta Jefry</td>
-                                <td>Monitor</td>
-                                <td>2026-03-09</td>
-                                <td>2026-03-13</td>
-                                <td>Activo</td>
-                            </tr>
-                        </tbody>
-
-                    </table>
-
+    <main class="container py-5">
+        <section class="mb-4">
+            <div class="row align-items-center g-3">
+                <div class="col-md-8">
+                    <h2 class="fw-bold mb-2">Prestamos Activos</h2>
+                    <p class="text-muted mb-0">
+                        Consulte los prestamos registrados actualmente dentro del sistema.
+                    </p>
                 </div>
-
-                <div class="mt-3 text-center">
-                    <a href="prestamo.html" class="btn btn-secondary">
-                        Volver al módulo de préstamos
+                <div class="col-md-4 text-md-end">
+                    <a href="solicitar_prestamo.html" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> Nuevo prestamo
                     </a>
                 </div>
-
             </div>
-        </div>
+        </section>
 
+        <section class="mb-4">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="border rounded p-3 h-100">
+                                <p class="text-muted mb-1">Prestamos activos</p>
+                                <h4 class="fw-bold mb-0 text-primary">4</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="border rounded p-3 h-100">
+                                <p class="text-muted mb-1">Equipos disponibles</p>
+                                <h4 class="fw-bold mb-0 text-success">12</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="border rounded p-3 h-100">
+                                <p class="text-muted mb-1">Prestamos por vencer</p>
+                                <h4 class="fw-bold mb-0 text-warning">2</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                        <h5 class="fw-bold mb-0">Listado de prestamos</h5>
+                        <input type="text" class="form-control w-auto" placeholder="Buscar prestamo...">
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered align-middle mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Equipo</th>
+                                    <th>Fecha prestamo</th>
+                                    <th>Fecha devolucion</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Barquero Alvarado Pablo Cesar</td>
+                                    <td>Laptop</td>
+                                    <td>2026-03-10</td>
+                                    <td>2026-03-15</td>
+                                    <td><span class="badge bg-success">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Campos Pérez Steven Josué</td>
+                                    <td>Tablet</td>
+                                    <td>2026-03-08</td>
+                                    <td>2026-03-12</td>
+                                    <td><span class="badge bg-warning text-dark">Por vencer</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Cuadra Quesada Maria del Sol</td>
+                                    <td>Proyector</td>
+                                    <td>2026-03-05</td>
+                                    <td>2026-03-11</td>
+                                    <td><span class="badge bg-success">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Goleath Arrieta Jefry</td>
+                                    <td>Monitor</td>
+                                    <td>2026-03-09</td>
+                                    <td>2026-03-13</td>
+                                    <td><span class="badge bg-primary">Registrado</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <a href="prestamo.html" class="btn btn-outline-dark">
+                            Volver al modulo
+                        </a>
+                        <a href="solicitar_prestamo.html" class="btn btn-primary">
+                            Registrar otro prestamo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <footer class="text-center py-3 mt-4">
+        <p class="mb-0">&copy; 2026 Sistema de prestamo de equipos</p>
+    </footer>
 </body>
 
 </html>
