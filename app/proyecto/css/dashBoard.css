@@ -45,9 +45,29 @@ body {
 }
 
 footer {
-    background-color: #000000;
+    background-color: #020202;
     color: white;
     text-align: center;
     padding: 15px;
     margin-top: 40px;
+}
+
+main {
+    flex: 1;
+}
+
+nav.navbar.bg-dark {
+    background-color: #020202 !important;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #aaaaaa !important;
 }
