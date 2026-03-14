@@ -1,7 +1,5 @@
-body{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;   
+body {
+    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
     min-height: 100vh;
     display: flex;
@@ -11,44 +9,46 @@ body{
 
 main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 
-.registrarEquipo {
-    flex: 1;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.nav-link {
-    transition: color 0.3s ease;
-}
-.nav-link:hover {
-    color: #aaaaaa !important;
-}
 nav.navbar.bg-dark {
     background-color: #020202 !important;
 }
+
 .navbar-brand, .nav-link {
-    color: white !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-.registrarEquipo .card {
+.nav-link:hover, .nav-link.active {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.card {
     border: none;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-.form-control:focus,
-.form-select:focus {
+
+.form-control:focus, .form-select:focus {
     border-color: #0d6efd;
     box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-dark {
+    border-radius: 30px;
     transition: all 0.3s ease;
 }
-.registrarEquipo .btn-primary {
-    border-radius: 30px;
-    padding: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+
+.btn-primary:hover, .btn-secondary:hover, .btn-success:hover, .btn-danger:hover {
+    transform: scale(1.05);
+}
+
+.table thead.table-dark th {
+    background-color: #020202;
+    border: none;
 }
 
 footer {
@@ -56,9 +56,10 @@ footer {
     color: white;
     text-align: center;
     padding: 15px;
+    margin-top: 40px;
     font-size: 0.85rem;
-    letter-spacing: 0.5px;
 }
+
 footer p {
-    margin: 0; /* elimina el espacio extra */
+    margin: 0;
 }

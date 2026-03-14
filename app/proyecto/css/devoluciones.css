@@ -15,41 +15,40 @@ nav.navbar.bg-dark {
     background-color: #020202 !important;
 }
 
-.nav-link {
-    transition: color 0.3s ease;
+.navbar-brand, .nav-link {
+    color: rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-.nav-link:hover {
-    color: #aaaaaa !important;
+.nav-link:hover, .nav-link.active {
+    color: #ffffff !important;
+    font-weight: bold;
 }
 
 .card {
     border: none;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.card-header {
-    border-radius: 16px 16px 0 0 !important;
-    background-color: #020202 !important;
-    border: none;
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
 }
 
-.form-control, .form-select {
-    border-radius: 10px;
-}
-
-.btn-dark, .btn-secondary {
+.btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-dark {
     border-radius: 30px;
+    transition: all 0.3s ease;
 }
 
-.table thead {
+.btn-primary:hover, .btn-secondary:hover, .btn-success:hover, .btn-danger:hover {
+    transform: scale(1.05);
+}
+
+.table thead.table-dark th {
     background-color: #020202;
-    color: white;
-}
-
-.table-hover tbody tr:hover {
-    background-color: rgba(13, 110, 253, 0.05);
+    border: none;
 }
 
 footer {
@@ -59,4 +58,8 @@ footer {
     padding: 15px;
     margin-top: 40px;
     font-size: 0.85rem;
+}
+
+footer p {
+    margin: 0;
 }
