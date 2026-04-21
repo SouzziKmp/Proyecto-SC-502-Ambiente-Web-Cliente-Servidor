@@ -1,10 +1,5 @@
-
-
 CREATE DATABASE IF NOT EXISTS prestamos_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE prestamos_db;
-
-
-
 
 CREATE TABLE Administrador (
     id_admin       INT          NOT NULL AUTO_INCREMENT,
@@ -34,9 +29,7 @@ CREATE TABLE Categoria (
     PRIMARY KEY (id_categoria)
 );
 
-
 -- EQUIPOS / INVENTARIO
-
 
 CREATE TABLE Equipos_Inventario (
     id_equipo         INT          NOT NULL AUTO_INCREMENT,
@@ -51,9 +44,7 @@ CREATE TABLE Equipos_Inventario (
         REFERENCES Categoria (id_categoria)
 );
 
-
 -- PRÉSTAMOS
-
 
 CREATE TABLE Prestamos (
     id_prestamo    INT          NOT NULL AUTO_INCREMENT,
@@ -78,9 +69,7 @@ CREATE TABLE Detalle_Prestamo (
         REFERENCES Equipos_Inventario (id_equipo)
 );
 
-
 -- REPORTES
-
 
 CREATE TABLE Reportes (
     id_reporte   INT          NOT NULL AUTO_INCREMENT,
@@ -97,9 +86,7 @@ CREATE TABLE Reportes (
     CONSTRAINT fk_reporte_admin     FOREIGN KEY (id_admin)    REFERENCES Administrador (id_admin)
 );
 
-
 -- HISTORIAL DE EQUIPOS
-
 
 CREATE TABLE Historial_Equipos (
     id_historial INT          NOT NULL AUTO_INCREMENT,
@@ -111,10 +98,7 @@ CREATE TABLE Historial_Equipos (
         REFERENCES Equipos_Inventario (id_equipo)
 );
 
-
-
 -- INSERTS DE PRUEBA
-
 
 -- Administradores
 INSERT INTO Administrador (nombre, email, password, rol, estado) VALUES
@@ -175,6 +159,3 @@ INSERT INTO Historial_Equipos (id_equipo, fecha, descripcion) VALUES
 (2, '2025-04-10', 'Préstamo activo - estudiante Pedro Solano.'),
 (4, '2025-04-13', 'Usado en clase magistral. Devuelto en buen estado.'),
 (5, '2025-04-15', 'Préstamo activo - estudiante María Torres.');
-
-
-
