@@ -10,11 +10,11 @@ class UserController {
 
     public function index() {
         $usuarios = $this->userModel->listarTodos();
-        require_once __DIR__ . '/../views/admin/usuarios.php';
+        require_once __DIR__ . '/../views/usuarios.php';
     }
 
     public function formularioRegistro() {
-        require_once __DIR__ . '/../views/admin/registrar_usuario.php';
+        require_once __DIR__ . '/../views/registrar_usuario.php';
     }
 
     public function guardar() {

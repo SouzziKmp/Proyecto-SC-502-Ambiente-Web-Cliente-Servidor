@@ -10,7 +10,7 @@ class DevolucionController {
 
     public function index() {
         $historial = $this->equipoModel->obtenerHistorialReciente();
-        require_once __DIR__ . '/../views/admin/devoluciones.php';
+        require_once __DIR__ . '/../views/devoluciones.php';
     }
 
     public function procesar() {

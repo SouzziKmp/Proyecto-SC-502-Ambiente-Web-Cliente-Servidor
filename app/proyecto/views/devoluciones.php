@@ -6,7 +6,7 @@
     <title>Devoluciones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="../css/devoluciones.css" rel="stylesheet">
+    <link href="public/css/devoluciones.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -91,6 +91,6 @@
         </section>
     </main>
     <footer class="mt-5 p-3 text-center border-top"><p>&copy; 2026 Sistema de préstamo de equipos</p></footer>
-    <script src="../js/devoluciones.js"></script>
+    <script src="public/js/devoluciones.js"></script>
 </body>
 </html>

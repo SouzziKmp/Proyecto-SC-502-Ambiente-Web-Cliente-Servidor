@@ -1,6 +1,4 @@
 <?php
-// controllers/EquipoController.php
-
 require_once __DIR__ . '/../models/EquipoModel.php';
 
 class EquipoController {

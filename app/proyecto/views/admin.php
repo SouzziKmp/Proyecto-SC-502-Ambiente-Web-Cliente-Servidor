@@ -6,7 +6,7 @@
     <title>Gestión de Usuarios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/usuarios.css" rel="stylesheet">
+    <link href="public/css/usuarios.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -64,6 +64,6 @@
         </div>
     </main>
     <footer><p>&copy; 2026 Sistema de préstamo de equipos</p></footer>
-    <script src="js/usuarios.js"></script>
+    <script src="public/js/usuarios.js"></script>
 </body>
 </html>

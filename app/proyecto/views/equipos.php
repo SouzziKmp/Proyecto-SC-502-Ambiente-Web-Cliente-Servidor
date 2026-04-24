@@ -1,17 +1,10 @@
-<?php
-// views/equipos.php
-if (!isset($equipos) || !isset($categorias)) {
-    header('Location: /Proyecto-SC-502-Ambiente-Web-Cliente-Servidor/app/proyecto/html/equipos.php');
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipos Registrados</title>
-    <link rel="stylesheet" href="/Proyecto-SC-502-Ambiente-Web-Cliente-Servidor/app/proyecto/css/equipos.css">
+    <link rel="stylesheet" href="public/css/equipos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,12 +16,12 @@ if (!isset($equipos) || !isset($categorias)) {
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <h1 class="h4 text-white m-0">Sistema de prestamo de equipo</h1>
             <ul class="d-flex align-items-center list-unstyled m-0 gap-3">
-                <li><a href="/Proyecto-SC-502-Ambiente-Web-Cliente-Servidor/app/proyecto/html/usuarios.php" class="nav-link text-white">Usuarios</a></li>
-                <li><a href="/Proyecto-SC-502-Ambiente-Web-Cliente-Servidor/app/proyecto/html/devoluciones.php" class="nav-link text-white">Devoluciones</a></li>
-                <li><a href="/Proyecto-SC-502-Ambiente-Web-Cliente-Servidor/app/proyecto/html/equipos.php" class="nav-link text-white fw-bold">Equipos</a></li>
-                <li><a href="/Proyecto-SC-502-Ambiente-Web-Cliente-Servidor/app/proyecto/html/prestamo.php" class="nav-link text-white">Prestamos</a></li>
+                <li><a href="usuarios.php" class="nav-link text-white">Usuarios</a></li>
+                <li><a href="devoluciones.php" class="nav-link text-white">Devoluciones</a></li>
+                <li><a href="equipos.php" class="nav-link text-white fw-bold">Equipos</a></li>
+                <li><a href="prestamo.php" class="nav-link text-white">Prestamos</a></li>
                 <li>
-                    <a href="/Proyecto-SC-502-Ambiente-Web-Cliente-Servidor/app/proyecto/html/login.php" class="btn btn-secondary">
+                    <a href="login.php" class="btn btn-secondary">
                         Logout <i class="bi bi-box-arrow-in-right"></i>
                     </a>
                 </li>
@@ -64,7 +57,7 @@ if (!isset($equipos) || !isset($categorias)) {
         <?php endif; ?>
  
         <div class="d-flex justify-content-between mb-3">
-            <a href="/Proyecto-SC-502-Ambiente-Web-Cliente-Servidor/app/proyecto/html/equipos.php?accion=registrar"
+            <a href="equipos.php?accion=registrar"
                class="btn btn-success">
                 <i class="bi bi-plus-lg me-1"></i> Registrar nuevo equipo
             </a>
