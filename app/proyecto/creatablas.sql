@@ -1,6 +1,4 @@
--- 1. LIMPIEZA INICIAL
-DROP DATABASE IF EXISTS prestamos_db;
-CREATE DATABASE prestamos_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 USE prestamos_db;
 
 -- 2. TABLA ADMINISTRADOR (Para el Login)
