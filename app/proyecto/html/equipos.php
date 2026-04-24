@@ -1,5 +1,5 @@
 <?php
-// equipos.php  — punto de entrada (va en la carpeta html/)
+
  
 require_once __DIR__ . '/../controllers/EquipoController.php';
  
