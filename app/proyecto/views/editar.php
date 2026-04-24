@@ -69,7 +69,7 @@
                                     </ul>
                                 </div>
                             <?php endif; ?>
-                            <form method="POST" action="index.php?action=actualizar">
+                            <form method="POST" action="index.php?action=actualizar_equipo">
                                 <input type="hidden" name="id_equipo" value="<?= $equipo['id_equipo'] ?>">
                                 <div class="mb-3">
                                     <label for="codigo_inventario" class="form-label">Código del equipo</label>

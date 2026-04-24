@@ -61,7 +61,7 @@
                     <p class="text-muted mb-0">Consulte los prestamos registrados actualmente dentro del sistema.</p>
                 </div>
                 <div class="col-md-4 text-md-end">
-                    <a href="index.php?action=solicitar" class="btn btn-primary">
+                    <a href="index.php?action=solicitar_prestamo" class="btn btn-primary">
                         <i class="bi bi-plus-circle"></i> Nuevo prestamo
                     </a>
                 </div>

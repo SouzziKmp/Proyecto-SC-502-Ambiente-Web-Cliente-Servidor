@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // === LÓGICA PARA LA VISTA DE LISTADO (mis_prestamos.php) ===
+    // === LÓGICA PARA EL LISTADO (mis_prestamos.php) ===
     function actualizarContadores() {
         let activos = 0;
         let devueltos = 0;
@@ -31,19 +31,26 @@ $(document).ready(function () {
         actualizarContadores();
     });
 
-    // === LÓGICA PARA EL FORMULARIO DE REGISTRO (solicitar_prestamo.php) ===
+    // === LÓGICA PARA EL REGISTRO (solicitar_prestamo.php) ===
     const formPrestamo = document.getElementById("formPrestamo");
 
     if (formPrestamo) {
         formPrestamo.addEventListener("submit", function (event) {
             event.preventDefault();
 
-            const idUsuario = document.getElementById("usuario").value;
-            const idEquipo = document.getElementById("equipo").value;
-            const fechaPrestamo = document.getElementById("fechaPrestamo").value;
-            const fechaDevolucion = document.getElementById("fechaDevolucion").value;
-            const mensaje = document.getElementById("mensajePrestamo");
+            // Referencias a los elementos del DOM
+            const idUsuario = document.getElementsByName("id_usuario")[0].value;
+            const idEquipo = document.getElementsByName("id_equipo")[0].value;
+            const fechaPrestamo = document.getElementsByName("fechaPrestamo")[0].value;
+            const fechaDevolucion = document.getElementsByName("fechaDevolucion")[0].value;
+            const mensaje = document.getElementById("mensajePrestamo") || document.createElement("div");
 
+            if (!document.getElementById("mensajePrestamo")) {
+                mensaje.id = "mensajePrestamo";
+                formPrestamo.prepend(mensaje);
+            }
+
+            // Validaciones básicas
             if (!idUsuario || !idEquipo || !fechaPrestamo || !fechaDevolucion) {
                 mensaje.innerHTML = `<div class="alert alert-danger">Todos los campos son obligatorios.</div>`;
                 return;
@@ -54,7 +61,7 @@ $(document).ready(function () {
                 return;
             }
 
-            // Envío de datos al controlador mediante AJAX
+            // Envío al controlador mediante AJAX
             const formData = new FormData();
             formData.append('id_usuario', idUsuario);
             formData.append('id_equipo', idEquipo);
@@ -75,6 +82,7 @@ $(document).ready(function () {
                     }, 1500);
                 } else {
                     mensaje.innerHTML = `<div class="alert alert-danger">Error al registrar el préstamo en el servidor.</div>`;
+                    console.error("Respuesta servidor:", data);
                 }
             })
             .catch(error => {

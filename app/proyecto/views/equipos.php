@@ -61,7 +61,7 @@
         </div>
     <?php endif; ?>
     <div class="d-flex justify-content-between mb-3">
-        <a href="index.php?action=registrar" class="btn btn-success">
+        <a href="index.php?action=registrar_equipo" class="btn btn-success">
             <i class="bi bi-plus-lg me-1"></i> Registrar nuevo equipo
         </a>
         <input type="text" id="buscarEquipo" class="form-control w-25" placeholder="Buscar equipo...">
@@ -96,10 +96,10 @@
                                 <td><?= htmlspecialchars($equipo['marca']) ?></td>
                                 <td><span class="badge bg-success"><?= ucfirst($equipo['estado']) ?></span></td>
                                 <td class="text-center">
-                                    <a href="index.php?action=editar&id=<?= $equipo['id_equipo'] ?>" class="btn btn-sm btn-warning">
+                                    <a href="index.php?action=editar_equipo&id=<?= $equipo['id_equipo'] ?>" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil-fill"></i>
                                     </a>
-                                    <form method="POST" action="index.php?action=eliminar" style="display:inline;" onsubmit="return confirm('¿Desactivar equipo?')">
+                                    <form method="POST" action="index.php?action=eliminar_equipo" style="display:inline;" onsubmit="return confirm('¿Desactivar equipo?')">
                                         <input type="hidden" name="id_equipo" value="<?= $equipo['id_equipo'] ?>">
                                         <button type="submit" class="btn btn-sm btn-danger">
                                             <i class="bi bi-trash-fill"></i>
