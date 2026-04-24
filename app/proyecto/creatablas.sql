@@ -107,8 +107,8 @@ CREATE TABLE Historial_Equipos (
 
 -- Administradores (Login: scampos@ufide.ac.c / admin123)
 INSERT INTO Administrador (nombre, email, password, rol, estado) VALUES
-('Steven Campos',  'scampos@ufide.ac.c',  'admin123', 'superadmin', 'activo'),
-('Pablo Barquero', 'pbarquero@ufide.ac.c', 'pass456',  'admin',      'activo');
+('Steven Campos',  'scampos@ufide.ac.cr',  'admin123', 'superadmin', 'activo'),
+('Pablo Barquero', 'pbarquero@ufide.ac.cr', 'pass456',  'admin',      'activo');
 
 -- Usuarios de prueba
 INSERT INTO Usuarios (nombre, cedula, email, telefono, tipo_usuario, estado) VALUES

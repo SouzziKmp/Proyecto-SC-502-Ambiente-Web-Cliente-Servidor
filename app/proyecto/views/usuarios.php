@@ -57,7 +57,7 @@
     <h1 class="text-center mb-4 h2 fw-bold">Lista de Usuarios</h1>
     
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-        <a href="index.php?action=registrar_usuario" class="btn btn-success">
+        <a href="index.php?action=registrar_usuario" class="btn btn-primary">
             <i class="bi bi-person-plus"></i> Registrar nuevo usuario
         </a>
         <input type="text" id="busqueda" class="form-control w-25" placeholder="Buscar usuario...">
@@ -89,7 +89,7 @@
                                 <a href="index.php?action=editar_usuario&id=<?= $u['id_usuarios'] ?>" class="btn btn-sm btn-primary">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <a href="index.php?action=eliminar_usuario&id=<?= $u['id_usuarios'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar usuario?')">
+                                <a href="index.php?action=eliminar_usuario&id=<?= $u['id_usuarios'] ?>" class="btn btn-sm btn-danger">
                                     <i class="bi bi-trash"></i>
                                 </a>
                             </td>

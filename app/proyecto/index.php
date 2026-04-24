@@ -9,11 +9,11 @@ require_once __DIR__ . '/controllers/EquipoController.php';
 require_once __DIR__ . '/controllers/PrestamoController.php';
 require_once __DIR__ . '/controllers/DevolucionController.php';
 
-$authController     = new AuthController();
-$userController     = new UserController();
-$equipoController   = new EquipoController();
+$authController = new AuthController();
+$userController = new UserController();
+$equipoController = new EquipoController();
 $prestamoController = new PrestamoController();
-$devController      = new DevolucionController();
+$devController = new DevolucionController();
 
 $action = $_GET['action'] ?? 'login';
 
@@ -35,6 +35,18 @@ switch ($action) {
         break;
     case 'registrar_usuario':
         $userController->formularioRegistro();
+        break;
+    case 'guardar_usuario': // Añadir esta
+        $userController->guardar();
+        break;
+    case 'editar_usuario': // Añadir esta
+        $userController->mostrarEditar();
+        break;
+    case 'actualizar_usuario': // Añadir esta
+        $userController->editar();
+        break;
+    case 'eliminar_usuario': // Añadir esta
+        $userController->eliminar();
         break;
     case 'equipos':
         $equipoController->index();
