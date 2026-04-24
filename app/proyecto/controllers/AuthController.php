@@ -5,7 +5,7 @@ class AuthController {
 
     public function mostrarLogin() {
         if (session_status() === PHP_SESSION_NONE) session_start();
-        // Si ya está logueado, mandarlo al dashboard directamente
+        
         if (isset($_SESSION['admin_id'])) {
             header("Location: index.php?action=dashboard");
             exit;
@@ -51,9 +51,40 @@ class AuthController {
             exit;
         }
 
-        require_once __DIR__ . '/../models/DashBoardModel.php';
-        $modelo = new Dashboard(); 
-        $datos = $modelo->obtenerEstadisticas();
+        $dbObj = new Database();
+        $db = $dbObj->connect();
+
+        // 1. Total de equipos registrados en el inventario
+        $sqlTotal = "SELECT COUNT(*) as total FROM Equipos_Inventario";
+        $resTotal = $db->query($sqlTotal);
+        $totalEquipos = $resTotal->fetch_assoc()['total'];
+
+        // 2. Total de equipos que están actualmente prestados
+        $sqlPrestados = "SELECT COUNT(*) as total FROM Equipos_Inventario WHERE estado = 'prestado'";
+        $resPrestados = $db->query($sqlPrestados);
+        $totalPrestados = $resPrestados->fetch_assoc()['total'];
+
+        // 3. Listado de préstamos activos con detalle de equipo y usuario
+        // Nota: Se une con Detalle_Prestamo para saber qué equipo es
+        $sqlLista = "SELECT e.nombre as equipo, u.nombre as usuario, p.fecha_prestamo, p.estado 
+                     FROM Prestamos p
+                     JOIN Usuarios u ON p.id_usuario = u.id_usuarios
+                     JOIN Detalle_Prestamo dp ON p.id_prestamo = dp.id_prestamo
+                     JOIN Equipos_Inventario e ON dp.id_equipo = e.id_equipo
+                     WHERE p.estado = 'activo' 
+                     ORDER BY p.fecha_prestamo DESC";
+        $resLista = $db->query($sqlLista);
+        
+        $listaPrestamos = [];
+        while ($fila = $resLista->fetch_assoc()) {
+            $listaPrestamos[] = $fila;
+        }
+
+        $datos = [
+            'total_equipos' => $totalEquipos,
+            'prestados' => $totalPrestados,
+            'lista_prestamos' => $listaPrestamos
+        ];
 
         include __DIR__ . '/../views/dashboard.php';
     }
