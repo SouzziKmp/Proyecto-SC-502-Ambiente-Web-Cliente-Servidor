@@ -113,10 +113,10 @@ INSERT INTO Administrador (nombre, email, password, rol, estado) VALUES
 
 -- Usuarios
 INSERT INTO Usuarios (nombre, cedula, email, telefono, tipo_usuario, estado) VALUES
-('Ana Jiménez',  '1-1234-5678', 'ajimenez@ufide.ac.c', '8800-1111', 'alumno',   'activo'),
-('Pedro Solano', '2-2345-6789', 'psolano@ufide.ac.c',  '8800-2222', 'alumno',   'activo'),
-('María Torres', '3-3456-7890', 'mtorres@ufide.ac.c',  '8800-3333', 'alumno',   'activo'),
-('Prof. Díaz',   '4-4567-8901', 'rdiaz@ufide.ac.c',    '8800-4444', 'profesor', 'activo'),
+('Ana Jiménez',  '1-1234-5678', 'ajimenez@ufide.ac.cr', '8800-1111', 'alumno',   'activo'),
+('Pedro Solano', '2-2345-6789', 'psolano@ufide.ac.cr',  '8800-2222', 'alumno',   'activo'),
+('María Torres', '3-3456-7890', 'mtorres@ufide.ac.cr',  '8800-3333', 'alumno',   'activo'),
+('Prof. Díaz',   '4-4567-8901', 'rdiaz@ufide.ac.cr',    '8800-4444', 'profesor', 'activo'),
 ('Prof. Arias',  '5-5678-9012', 'carias@ufide.ac.cr',  '8800-5555', 'profesor', 'activo');
 
 -- Categorías

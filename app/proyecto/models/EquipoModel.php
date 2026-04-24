@@ -23,6 +23,7 @@ class EquipoModel {
                     c.nombre AS categoria
                 FROM Equipos_Inventario e
                 INNER JOIN Categoria c ON e.id_categoria = c.id_categoria
+                WHERE e.estado != 'inactivo'
                 ORDER BY e.id_equipo DESC";
         $result = $this->conn->query($sql);
         return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
@@ -110,7 +111,7 @@ class EquipoModel {
 
     public function eliminar(int $id): bool {
         $stmt = $this->conn->prepare(
-            "DELETE FROM Equipos_Inventario WHERE id_equipo = ?"
+            "UPDATE Equipos_Inventario SET estado = 'inactivo' WHERE id_equipo = ?"
         );
         $stmt->bind_param("i", $id);
         $stmt->execute();

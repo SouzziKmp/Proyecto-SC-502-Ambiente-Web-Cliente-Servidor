@@ -17,14 +17,35 @@
             <h1 class="h4 text-white m-0">Sistema de préstamo de equipo</h1>
             
             <ul class="d-flex align-items-center list-unstyled m-0 gap-3">
-                <li><a href="index.php?action=usuarios" class="nav-link text-white">Usuarios</a></li>
-                <li><a href="index.php?action=devoluciones" class="nav-link text-white">Devoluciones</a></li>
-                <li><a href="index.php?action=equipos" class="nav-link text-white">Equipos</a></li>
-                <li><a href="index.php?action=prestamos" class="nav-link text-white">Préstamos</a></li>
                 <li>
-                    <a href="login.html" class="btn btn-secondary btn-sm py-1 d-flex align-items-center gap-2">
+                    <a href="index.php?action=dashboard" class="nav-link text-white <?php echo ($_GET['action'] == 'dashboard') ? 'active fw-bold' : ''; ?>">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=usuarios" class="nav-link text-white <?php echo ($_GET['action'] == 'usuarios') ? 'active fw-bold' : ''; ?>">
+                        Usuarios
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=devoluciones" class="nav-link text-white <?php echo ($_GET['action'] == 'devoluciones') ? 'active fw-bold' : ''; ?>">
+                        Devoluciones
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=equipos" class="nav-link text-white <?php echo ($_GET['action'] == 'equipos') ? 'active fw-bold' : ''; ?>">
+                        Equipos
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=prestamos" class="nav-link text-white <?php echo ($_GET['action'] == 'prestamos') ? 'active fw-bold' : ''; ?>">
+                        Préstamos
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=logout" class="btn btn-danger btn-sm py-1 d-flex align-items-center gap-2 shadow-sm">
                         <span>Cerrar sesión</span>
-                        <i class="bi bi-box-arrow-in-right" style="font-size: 1rem;"></i>
+                        <i class="bi bi-box-arrow-right" style="font-size: 1rem;"></i>
                     </a>
                 </li>
             </ul>

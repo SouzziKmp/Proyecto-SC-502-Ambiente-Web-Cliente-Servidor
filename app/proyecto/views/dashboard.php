@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Usuarios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Dashboard | Sistema de Préstamos</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/styles.css">
+    <link href="public/css/styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
-<body>
-
 <header>
     <nav class="navbar bg-dark border-bottom border-body p-3" data-bs-theme="dark">
         <div class="container-fluid d-flex justify-content-between align-items-center">
@@ -53,58 +52,59 @@
     </nav>
 </header>
 
-<main class="container mt-5">
-    <h1 class="text-center mb-4 h2 fw-bold">Lista de Usuarios</h1>
-    
-    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-        <a href="index.php?action=registrar_usuario" class="btn btn-success">
-            <i class="bi bi-person-plus"></i> Registrar nuevo usuario
-        </a>
-        <input type="text" id="busqueda" class="form-control w-25" placeholder="Buscar usuario...">
-    </div>
+    <div class="container mt-5">
+        <div class="row mb-4 align-items-center">
+            <div class="col">
+                <h2 class="fw-bold">Panel de Control</h2>
+                <p class="text-muted">Resumen general del estado de los equipos.</p>
+            </div>
+        </div>
 
-    <div class="card shadow">
-        <div class="card-body p-0">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card bg-white p-4 shadow-sm border-0 h-100">
+                    <p class="text-muted small fw-bold mb-1">EQUIPOS TOTALES</p>
+                    <h3 class="fw-bold mb-0"><?php echo $datos['total_equipos']; ?></h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-white p-4 shadow-sm border-0 h-100">
+                    <p class="text-muted small fw-bold mb-1">EN PRÉSTAMO</p>
+                    <h3 class="fw-bold mb-0"><?php echo $datos['prestados']; ?></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-white mt-5 p-4 shadow-sm border-0">
+            <h5 class="fw-bold mb-4">Préstamos en curso</h5>
             <div class="table-responsive">
-                <table class="table table-striped table-hover mb-0">
+                <table class="table align-middle table-hover">
                     <thead class="table-dark">
                         <tr>
-                            <th class="ps-3">Nombre</th>
-                            <th>Correo</th>
-                            <th>Rol</th>
-                            <th>Estado</th>
-                            <th class="text-center">Acciones</th>
+                            <th>EQUIPO</th>
+                            <th>USUARIO</th>
+                            <th>FECHA SALIDA</th>
+                            <th>ESTADO</th>
                         </tr>
                     </thead>
-                    <tbody id="tablaUsuarios">
-                        <?php foreach ($usuarios as $u): ?>
-                        <tr>
-                            <td class="ps-3 fw-bold"><?= htmlspecialchars($u['nombre']) ?></td>
-                            <td><?= htmlspecialchars($u['email']) ?></td>
-                            <td><?= htmlspecialchars($u['tipo_usuario']) ?></td>
-                            <td>
-                                <span class="badge bg-success"><?= htmlspecialchars($u['estado'] ?? 'Activo') ?></span>
-                            </td>
-                            <td class="text-center">
-                                <a href="index.php?action=editar_usuario&id=<?= $u['id_usuarios'] ?>" class="btn btn-sm btn-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                                <a href="index.php?action=eliminar_usuario&id=<?= $u['id_usuarios'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar usuario?')">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
+                    <tbody>
+                        <?php if (!empty($datos['lista_prestamos'])): ?>
+                            <?php foreach ($datos['lista_prestamos'] as $p): ?>
+                                <tr>
+                                    <td><strong><?php echo htmlspecialchars($p['equipo']); ?></strong></td>
+                                    <td><?php echo htmlspecialchars($p['usuario']); ?></td>
+                                    <td><?php echo $p['fecha_prestamo']; ?></td>
+                                    <td><span class="badge bg-success"><?php echo $p['estado']; ?></span></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="4" class="text-center py-4">No hay préstamos activos.</td></tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</main>
-
-<footer class="mt-5 p-3 text-center border-top">
-    <p>&copy; 2026 Sistema de préstamo de equipos</p>
-</footer>
-
+    <script src="public/js/dashboard.js"></script>
 </body>
 </html>
