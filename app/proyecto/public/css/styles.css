@@ -1,13 +1,129 @@
-.footer-custom {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 22px 0;
-    margin-top: 40px;
+/* --- CONFIGURACIÓN BASE --- */
+html, body {
+    height: 100%;
 }
 
-.footer-custom p {
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     margin: 0;
-    font-size: 16px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Fondo para Login e Index */
+body.bg-auth {
+    background-image: url("../img/prueba.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+main {
+    flex: 1;
+}
+
+/* --- NAVEGACIÓN (NAVBAR) --- */
+nav.navbar.bg-dark {
+    background-color: #020202 !important;
+    padding: 1rem;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #aaaaaa !important;
+    transform: translateY(-1px);
+}
+
+/* --- COMPONENTES DE INTERFAZ (CARDS) --- */
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.card-Resume:hover {
+    transform: translateY(-3px);
+}
+
+/* Contenedores especiales */
+.caja {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    padding: 2rem;
+}
+
+/* --- FORMULARIOS --- */
+.form-control, .form-select {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+/* --- BOTONES --- */
+.btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-dark, .btn-outline-dark {
+    border-radius: 30px !important;
+    padding: 10px 20px;
     font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+/* --- TABLAS --- */
+.table thead.table-dark th {
+    background-color: #020202;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* --- UTILIDADES DE DASHBOARD --- */
+.bg-success-subtle { background-color: #d1e7dd !important; }
+.bg-warning-subtle { background-color: #fff3cd !important; }
+
+/* --- FOOTER --- */
+footer {
+    background-color: #020202;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* --- LOGIN ESPECÍFICO --- */
+.col-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }

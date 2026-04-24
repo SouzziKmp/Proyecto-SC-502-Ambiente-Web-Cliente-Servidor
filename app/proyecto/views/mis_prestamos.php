@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Prestamos</title>
-    <link rel="stylesheet" href="../css/mis_prestamos.css">
+    <link rel="stylesheet" href="public/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -105,7 +105,7 @@
                                                 <?php elseif ($p['estado'] === 'devuelto'): ?>
                                                     <span class="badge bg-secondary">Devuelto</span>
                                                 <?php else: ?>
-                                                    <span class="badge bg-warning text-dark">Por vencer</span>
+                                                    <span class="badge bg-warning text-dark"><?= htmlspecialchars($p['estado']) ?></span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -124,23 +124,8 @@
         </section>
     </main>
 
-    <footer class="footer-custom">
-        <p>&copy; 2026 Sistema de prestamo de equipos</p>
-    </footer>
+    <footer class="mt-5 p-3 text-center border-top"><p>&copy; 2026 Sistema de préstamo de equipos</p></footer>
 
-    <script>
-    $(document).ready(function () {
-        // Contar estados y actualizar contadores
-        let activos = 0, devueltos = 0, total = 0;
-        $('#tablaPrestamos tbody tr').each(function () {
-            total++;
-            const badge = $(this).find('.badge');
-            if (badge.hasClass('bg-success')) activos++;
-            if (badge.hasClass('bg-secondary')) devueltos++;
-        });
-        $('#contadorActivos').text(activos);
-        $('#contadorDevueltos').text(devueltos);
-        $('#contadorTotal').text(total);
-
-        // Buscador en tiempo real
-        $('#buscador').on('keyup', function (
+    <script src="public/js/prestamo.js"></script>
+</body>
+</html>

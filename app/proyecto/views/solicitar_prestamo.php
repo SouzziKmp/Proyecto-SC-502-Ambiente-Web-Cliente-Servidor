@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitar Prestamo</title>
-    <link rel="stylesheet" href="../css/solicitar_prestamo.css">
+    <link rel="stylesheet" href="public/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -37,7 +37,6 @@
                         </div>
 
                         <form id="formPrestamo">
-
                             <div class="mb-3">
                                 <label for="id_usuario" class="form-label">Usuario</label>
                                 <select class="form-select" id="id_usuario" name="id_usuario" required>
@@ -102,74 +101,8 @@
         </div>
     </main>
 
-    <footer class="footer-custom">
-        <p>&copy; 2026 Sistema de prestamo de equipos</p>
-    </footer>
+    <footer class="mt-5 p-3 text-center border-top"><p>&copy; 2026 Sistema de préstamo de equipos</p></footer>
 
-    <script>
-    $(document).ready(function () {
-        // Fecha mínima de hoy
-        const hoy = new Date().toISOString().split('T')[0];
-        $('#fechaPrestamo').attr('min', hoy);
-        $('#fechaDevolucion').attr('min', hoy);
-
-        // Ajustar mínimo de devolución cuando cambia fecha de préstamo
-        $('#fechaPrestamo').on('change', function () {
-            const fechaP = $(this).val();
-            $('#fechaDevolucion').attr('min', fechaP);
-            if ($('#fechaDevolucion').val() && $('#fechaDevolucion').val() < fechaP) {
-                $('#fechaDevolucion').val('');
-            }
-        });
-
-        // Enviar formulario con AJAX
-        $('#formPrestamo').on('submit', function (e) {
-            e.preventDefault();
-            $('#mensajePrestamo').html('');
-
-            const usuario = $('#id_usuario').val();
-            const equipo  = $('#id_equipo').val();
-            const fechaP  = $('#fechaPrestamo').val();
-            const fechaD  = $('#fechaDevolucion').val();
-
-            if (!usuario || !equipo || !fechaP || !fechaD) {
-                $('#mensajePrestamo').html(
-                    '<div class="alert alert-danger">Todos los campos son obligatorios.</div>'
-                );
-                return;
-            }
-
-            if (fechaD < fechaP) {
-                $('#mensajePrestamo').html(
-                    '<div class="alert alert-danger">La fecha de devolución debe ser posterior a la fecha de préstamo.</div>'
-                );
-                return;
-            }
-
-            $.ajax({
-                type: 'POST',
-                url: 'index.php?action=guardar_prestamo',
-                data: $(this).serialize(),
-                success: function (response) {
-                    if (response.trim() === 'success') {
-                        $('#mensajePrestamo').html(
-                            '<div class="alert alert-success">Préstamo registrado correctamente.</div>'
-                        );
-                        $('#formPrestamo')[0].reset();
-                    } else {
-                        $('#mensajePrestamo').html(
-                            '<div class="alert alert-danger">Ocurrió un error al registrar. Intente de nuevo.</div>'
-                        );
-                    }
-                },
-                error: function () {
-                    $('#mensajePrestamo').html(
-                        '<div class="alert alert-danger">Error de conexión con el servidor.</div>'
-                    );
-                }
-            });
-        });
-    });
-    </script>
+    <script src="public/js/solicitar_prestamo.js"></script>
 </body>
 </html>
