@@ -12,7 +12,7 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Fondo para Login e Index */
+/* Fondo para Login e Index [cite: 372, 409] */
 body.bg-auth {
     background-image: url("../img/prueba.jpg");
     background-repeat: no-repeat;
@@ -24,7 +24,7 @@ main {
     flex: 1;
 }
 
-/* --- NAVEGACIÓN (NAVBAR) --- */
+/* --- NAVEGACIÓN (NAVBAR) [cite: 47, 94] --- */
 nav.navbar.bg-dark {
     background-color: #020202 !important;
     padding: 1rem;
@@ -40,7 +40,16 @@ nav.navbar.bg-dark {
     transform: translateY(-1px);
 }
 
-/* --- COMPONENTES DE INTERFAZ (CARDS) --- */
+/* Ajuste específico para el tamaño del botón en el Navbar */
+.navbar .btn-sm {
+    padding: 4px 12px !important;
+    font-size: 0.85rem !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- COMPONENTES DE INTERFAZ (CARDS) [cite: 132, 219] --- */
 .card {
     border: none;
     border-radius: 16px;
@@ -48,11 +57,11 @@ nav.navbar.bg-dark {
     transition: transform 0.2s ease;
 }
 
-.card-Resume:hover {
+.card:hover {
     transform: translateY(-3px);
 }
 
-/* Contenedores especiales */
+/* Contenedores especiales (Login/Index) */
 .caja {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
@@ -60,7 +69,7 @@ nav.navbar.bg-dark {
     padding: 2rem;
 }
 
-/* --- FORMULARIOS --- */
+/* --- FORMULARIOS [cite: 66, 371] --- */
 .form-control, .form-select {
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -71,12 +80,15 @@ nav.navbar.bg-dark {
     box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
 }
 
-/* --- BOTONES --- */
+/* --- BOTONES [cite: 22, 232] --- */
 .btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-dark, .btn-outline-dark {
     border-radius: 30px !important;
-    padding: 10px 20px;
+    padding: 8px 20px; /* Padding ajustado para evitar botones inflados */
     font-weight: 600;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-primary:hover, .btn-success:hover {
@@ -84,13 +96,14 @@ nav.navbar.bg-dark {
     box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
 }
 
-/* --- TABLAS --- */
+/* --- TABLAS [cite: 134, 154] --- */
 .table thead.table-dark th {
     background-color: #020202;
     color: white;
     font-weight: 500;
     letter-spacing: 0.5px;
     border: none;
+    padding: 12px;
 }
 
 .table tbody tr {
@@ -101,17 +114,18 @@ nav.navbar.bg-dark {
     background-color: rgba(13, 110, 253, 0.05);
 }
 
-/* --- UTILIDADES DE DASHBOARD --- */
+/* --- UTILIDADES DE DASHBOARD [cite: 243, 297] --- */
 .bg-success-subtle { background-color: #d1e7dd !important; }
 .bg-warning-subtle { background-color: #fff3cd !important; }
+.badge { border-radius: 12px; padding: 6px 12px; }
 
-/* --- FOOTER --- */
+/* --- FOOTER [cite: 345] --- */
 footer {
     background-color: #020202;
     color: white;
     text-align: center;
     padding: 15px;
-    margin-top: 40px;
+    margin-top: auto; /* Empuja el footer al final */
     font-size: 0.85rem;
     letter-spacing: 0.5px;
 }
@@ -120,7 +134,7 @@ footer p {
     margin: 0;
 }
 
-/* --- LOGIN ESPECÍFICO --- */
+/* --- IMÁGENES Y OTROS [cite: 11, 432] --- */
 .col-img img {
     width: 100%;
     height: 100%;

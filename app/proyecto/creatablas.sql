@@ -1,6 +1,11 @@
-CREATE DATABASE IF NOT EXISTS prestamos_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- Limpieza inicial de la base de datos
+DROP DATABASE IF EXISTS prestamos_db;
+
+-- Crear la base de datos con el cotejamiento solicitado
+CREATE DATABASE prestamos_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE prestamos_db;
 
+-- 1. TABLA ADMINISTRADOR
 CREATE TABLE Administrador (
     id_admin       INT          NOT NULL AUTO_INCREMENT,
     nombre         VARCHAR(50)  NOT NULL,
@@ -12,31 +17,33 @@ CREATE TABLE Administrador (
     PRIMARY KEY (id_admin)
 );
 
+-- 2. TABLA USUARIOS
 CREATE TABLE Usuarios (
     id_usuarios  INT          NOT NULL AUTO_INCREMENT,
     nombre       VARCHAR(50)  NOT NULL,
     cedula       VARCHAR(20)  NOT NULL UNIQUE,
     email        VARCHAR(50)  NOT NULL UNIQUE,
     telefono     VARCHAR(50),
-    tipo_usuario VARCHAR(20)  NOT NULL,  -- 'alumno' | 'profesor'
+    tipo_usuario VARCHAR(20)  NOT NULL, -- 'alumno' | 'profesor'
     estado       VARCHAR(50)  NOT NULL DEFAULT 'activo',
     PRIMARY KEY (id_usuarios)
 );
 
+-- 3. TABLA CATEGORÍA
 CREATE TABLE Categoria (
     id_categoria INT         NOT NULL AUTO_INCREMENT,
     nombre       VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_categoria)
 );
 
--- EQUIPOS / INVENTARIO
-
+-- 4. TABLA EQUIPOS / INVENTARIO
 CREATE TABLE Equipos_Inventario (
     id_equipo         INT          NOT NULL AUTO_INCREMENT,
     codigo_inventario VARCHAR(50)  NOT NULL UNIQUE,
     nombre            VARCHAR(50)  NOT NULL,
     marca             VARCHAR(50),
     marcamodelo       VARCHAR(50),
+    numero_serie      VARCHAR(50), -- Columna necesaria para la trazabilidad y el modelo
     id_categoria      INT          NOT NULL,
     estado            VARCHAR(50)  NOT NULL DEFAULT 'disponible',
     PRIMARY KEY (id_equipo),
@@ -44,20 +51,20 @@ CREATE TABLE Equipos_Inventario (
         REFERENCES Categoria (id_categoria)
 );
 
--- PRÉSTAMOS
-
+-- 5. TABLA PRÉSTAMOS
 CREATE TABLE Prestamos (
-    id_prestamo    INT          NOT NULL AUTO_INCREMENT,
-    id_usuario     INT          NOT NULL,
-    fecha_prestamo DATE         NOT NULL,
-    fecha_devo_esti DATE        NOT NULL,
+    id_prestamo     INT          NOT NULL AUTO_INCREMENT,
+    id_usuario      INT          NOT NULL,
+    fecha_prestamo  DATE         NOT NULL,
+    fecha_devo_esti DATE         NOT NULL,
     fecha_devo_real DATE,
-    estado         VARCHAR(50)  NOT NULL DEFAULT 'activo',
+    estado          VARCHAR(50)  NOT NULL DEFAULT 'activo',
     PRIMARY KEY (id_prestamo),
     CONSTRAINT fk_prestamo_usuario FOREIGN KEY (id_usuario)
         REFERENCES Usuarios (id_usuarios)
 );
 
+-- 6. TABLA DETALLE_PRESTAMO
 CREATE TABLE Detalle_Prestamo (
     id_detalle  INT NOT NULL AUTO_INCREMENT,
     id_prestamo INT NOT NULL,
@@ -69,12 +76,11 @@ CREATE TABLE Detalle_Prestamo (
         REFERENCES Equipos_Inventario (id_equipo)
 );
 
--- REPORTES
-
+-- 7. TABLA REPORTES
 CREATE TABLE Reportes (
     id_reporte   INT          NOT NULL AUTO_INCREMENT,
     tipo_reporte VARCHAR(25)  NOT NULL,
-    descripcion  VARCHAR(25),
+    descripcion  VARCHAR(100),
     prioridad    VARCHAR(25),
     fecha        DATE         NOT NULL,
     id_equipo    INT          NOT NULL,
@@ -86,8 +92,7 @@ CREATE TABLE Reportes (
     CONSTRAINT fk_reporte_admin     FOREIGN KEY (id_admin)    REFERENCES Administrador (id_admin)
 );
 
--- HISTORIAL DE EQUIPOS
-
+-- 8. TABLA HISTORIAL_EQUIPOS
 CREATE TABLE Historial_Equipos (
     id_historial INT          NOT NULL AUTO_INCREMENT,
     id_equipo    INT          NOT NULL,
@@ -103,54 +108,46 @@ CREATE TABLE Historial_Equipos (
 -- Administradores
 INSERT INTO Administrador (nombre, email, password, rol, estado) VALUES
 ('Steven Campos',  'scampos@ufide.ac.c',  'admin123', 'superadmin', 'activo'),
-('Pablo Barquero',   'pbarquero@ufide.ac.c',  'pass456',  'admin',      'activo'),
-('Sol Cuadra',  'scuadra@ufide.ac.c',   'pass789',  'admin',      'inactivo');
+('Pablo Barquero', 'pbarquero@ufide.ac.c', 'pass456',  'admin',      'activo'),
+('Sol Cuadra',     'scuadra@ufide.ac.c',  'pass789',  'admin',      'inactivo');
 
--- Usuarios (Alumnos y Profesores)
+-- Usuarios
 INSERT INTO Usuarios (nombre, cedula, email, telefono, tipo_usuario, estado) VALUES
-('Ana Jiménez',    '1-1234-5678', 'ajimenez@ufide.ac.c',  '8800-1111', 'alumno',   'activo'),
-('Pedro Solano',   '2-2345-6789', 'psolano@ufide.ac.c',   '8800-2222', 'alumno',   'activo'),
-('María Torres',   '3-3456-7890', 'mtorres@ufide.ac.c',   '8800-3333', 'alumno',   'activo'),
-('Prof. Díaz',     '4-4567-8901', 'rdiaz@ufide.ac.c',            '8800-4444', 'profesor', 'activo'),
-('Prof. Arias',    '5-5678-9012', 'carias@ufide.ac.cr',           '8800-5555', 'profesor', 'activo');
+('Ana Jiménez',  '1-1234-5678', 'ajimenez@ufide.ac.c', '8800-1111', 'alumno',   'activo'),
+('Pedro Solano', '2-2345-6789', 'psolano@ufide.ac.c',  '8800-2222', 'alumno',   'activo'),
+('María Torres', '3-3456-7890', 'mtorres@ufide.ac.c',  '8800-3333', 'alumno',   'activo'),
+('Prof. Díaz',   '4-4567-8901', 'rdiaz@ufide.ac.c',    '8800-4444', 'profesor', 'activo'),
+('Prof. Arias',  '5-5678-9012', 'carias@ufide.ac.cr',  '8800-5555', 'profesor', 'activo');
 
 -- Categorías
 INSERT INTO Categoria (nombre) VALUES
-('Laptop'),
-('Tablet'),
-('Proyector'),
-('Cámara'),
-('Cables y Adaptadores');
+('Laptop'), ('Tablet'), ('Proyector'), ('Cámara'), ('Cables y Adaptadores');
 
--- Equipos / Inventario
-INSERT INTO Equipos_Inventario (codigo_inventario, nombre, marca, marcamodelo, id_categoria, estado) VALUES
-('EQ-001', 'Laptop HP Pavilion',    'HP',     'Pavilion 15',    1, 'disponible'),
-('EQ-002', 'Laptop Dell Inspiron',  'Dell',   'Inspiron 14',    1, 'prestado'),
-('EQ-003', 'Tablet Samsung',        'Samsung','Galaxy Tab A8',  2, 'disponible'),
-('EQ-004', 'Proyector Epson',       'Epson',  'EB-X51',         3, 'disponible'),
-('EQ-005', 'Cámara Canon',          'Canon',  'EOS Rebel T7',   4, 'prestado'),
-('EQ-006', 'Adaptador HDMI-USB C',  'Anker',  'A83460A1',       5, 'disponible');
+-- Equipos / Inventario (Con número de serie de ejemplo)
+INSERT INTO Equipos_Inventario (codigo_inventario, nombre, marca, marcamodelo, numero_serie, id_categoria, estado) VALUES
+('EQ-001', 'Laptop HP Pavilion',    'HP',      'Pavilion 15',  'SN-HP001', 1, 'disponible'),
+('EQ-002', 'Laptop Dell Inspiron',  'Dell',    'Inspiron 14',  'SN-DL002', 1, 'prestado'),
+('EQ-003', 'Tablet Samsung',        'Samsung', 'Galaxy Tab A8','SN-SM003', 2, 'disponible'),
+('EQ-004', 'Proyector Epson',       'Epson',   'EB-X51',       'SN-EP004', 3, 'disponible'),
+('EQ-005', 'Cámara Canon',          'Canon',   'EOS Rebel T7', 'SN-CN005', 4, 'prestado'),
+('EQ-006', 'Adaptador HDMI-USB C',  'Anker',   'A83460A1',     'SN-AK006', 5, 'disponible');
 
 -- Préstamos
 INSERT INTO Prestamos (id_usuario, fecha_prestamo, fecha_devo_esti, fecha_devo_real, estado) VALUES
 (1, '2025-04-01', '2025-04-05', '2025-04-04', 'devuelto'),
-(2, '2025-04-10', '2025-04-14', NULL,          'activo'),
+(2, '2025-04-10', '2025-04-14', NULL,         'activo'),
 (4, '2025-04-12', '2025-04-13', '2025-04-13', 'devuelto'),
-(3, '2025-04-15', '2025-04-17', NULL,          'activo');
+(3, '2025-04-15', '2025-04-17', NULL,         'activo');
 
 -- Detalle de Préstamos
 INSERT INTO Detalle_Prestamo (id_prestamo, id_equipo) VALUES
-(1, 1),   -- préstamo 1 → Laptop HP
-(2, 2),   -- préstamo 2 → Laptop Dell
-(2, 6),   -- préstamo 2 → Adaptador
-(3, 4),   -- préstamo 3 → Proyector
-(4, 5);   -- préstamo 4 → Cámara Canon
+(1, 1), (2, 2), (2, 6), (3, 4), (4, 5);
 
 -- Reportes
 INSERT INTO Reportes (tipo_reporte, descripcion, prioridad, fecha, id_equipo, id_usuarios, id_admin) VALUES
-('daño',       'Pantalla rayada',     'alta',  '2025-04-05', 1, 1, 1),
-('extravío',   'Cargador faltante',   'media', '2025-04-14', 2, 2, 2),
-('mantenimiento','Revisión general',  'baja',  '2025-04-13', 4, 4, 1);
+('daño', 'Pantalla rayada', 'alta', '2025-04-05', 1, 1, 1),
+('extravío', 'Cargador faltante', 'media', '2025-04-14', 2, 2, 2),
+('mantenimiento', 'Revisión general', 'baja', '2025-04-13', 4, 4, 1);
 
 -- Historial de Equipos
 INSERT INTO Historial_Equipos (id_equipo, fecha, descripcion) VALUES

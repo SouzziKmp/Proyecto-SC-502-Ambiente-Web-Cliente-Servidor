@@ -10,20 +10,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar bg-dark border-bottom border-body p-3" data-bs-theme="dark">
-            <div class="container-fluid d-flex justify-content-between align-items-center">
-                <h1 class="h4 text-white m-0">Sistema de préstamo de equipo</h1>
-                <ul id="nav-menu" class="d-flex align-items-center list-unstyled m-0 gap-3">
-                    <li><a href="index.php?action=usuarios" class="nav-link text-white">Usuarios</a></li>
-                    <li><a href="index.php?action=devoluciones" class="nav-link active text-white">Devoluciones</a></li>
-                    <li><a href="index.php?action=equipos" class="nav-link text-white">Equipos</a></li>
-                    <li><a href="index.php?action=prestamos" class="nav-link text-white">Préstamos</a></li>
-                    <li><a href="login.html" class="btn btn-secondary">Cerrar sesión <i class="bi bi-box-arrow-in-right"></i></a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<header>
+    <nav class="navbar bg-dark border-bottom border-body p-3" data-bs-theme="dark">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="h4 text-white m-0">Sistema de préstamo de equipo</h1>
+            
+            <ul class="d-flex align-items-center list-unstyled m-0 gap-3">
+                <li><a href="index.php?action=usuarios" class="nav-link text-white">Usuarios</a></li>
+                <li><a href="index.php?action=devoluciones" class="nav-link text-white">Devoluciones</a></li>
+                <li><a href="index.php?action=equipos" class="nav-link text-white">Equipos</a></li>
+                <li><a href="index.php?action=prestamos" class="nav-link text-white">Préstamos</a></li>
+                <li>
+                    <a href="login.html" class="btn btn-secondary btn-sm py-1 d-flex align-items-center gap-2">
+                        <span>Cerrar sesión</span>
+                        <i class="bi bi-box-arrow-in-right" style="font-size: 1rem;"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
     <main class="container mt-5">
         <h1 class="text-center mb-4">Retorno de Equipos</h1>
         <div class="row mb-5">

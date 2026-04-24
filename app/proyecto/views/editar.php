@@ -18,15 +18,17 @@
 <header>
     <nav class="navbar bg-dark border-bottom border-body p-3" data-bs-theme="dark">
         <div class="container-fluid d-flex justify-content-between align-items-center">
-            <h1 class="h4 text-white m-0">Sistema de prestamo de equipo</h1>
+            <h1 class="h4 text-white m-0">Sistema de préstamo de equipo</h1>
+            
             <ul class="d-flex align-items-center list-unstyled m-0 gap-3">
-                <li><a href="usuarios.php" class="nav-link text-white">Usuarios</a></li>
-                <li><a href="devoluciones.php" class="nav-link text-white">Devoluciones</a></li>
-                <li><a href="equipos.php" class="nav-link text-white">Equipos</a></li>
-                <li><a href="prestamo.php" class="nav-link text-white fw-bold">Prestamos</a></li>
+                <li><a href="index.php?action=usuarios" class="nav-link text-white">Usuarios</a></li>
+                <li><a href="index.php?action=devoluciones" class="nav-link text-white">Devoluciones</a></li>
+                <li><a href="index.php?action=equipos" class="nav-link text-white">Equipos</a></li>
+                <li><a href="index.php?action=prestamos" class="nav-link text-white">Préstamos</a></li>
                 <li>
-                    <a href="login.php" class="btn btn-secondary">
-                        Logout <i class="bi bi-box-arrow-in-right"></i>
+                    <a href="login.html" class="btn btn-secondary btn-sm py-1 d-flex align-items-center gap-2">
+                        <span>Cerrar sesión</span>
+                        <i class="bi bi-box-arrow-in-right" style="font-size: 1rem;"></i>
                     </a>
                 </li>
             </ul>
@@ -190,9 +192,7 @@
     </section>
 </main>
  
-<footer>
-    <p class="text-center">&copy; 2026 Sistema de prestamo de equipos</p>
-</footer>
+    <footer class="mt-5 p-3 text-center border-top"><p>&copy; 2026 Sistema de préstamo de equipos</p></footer>
  
 </body>
 </html>
