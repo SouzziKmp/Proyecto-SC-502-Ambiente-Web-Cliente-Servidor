@@ -6,23 +6,34 @@ class EquipoController {
     private EquipoModel $model;
 
     public function __construct() {
+        if (session_status() === PHP_SESSION_NONE) session_start();
         $this->model = new EquipoModel();
     }
 
+    private function verificarSesion() {
+        if (!isset($_SESSION['admin_id'])) {
+            header('Location: index.php?action=login');
+            exit;
+        }
+    }
+
     public function index(): void {
-        $equipos    = $this->model->obtenerTodos();
+        $this->verificarSesion();
+        $equipos = $this->model->obtenerTodos();
         require __DIR__ . '/../views/equipos.php';
     }
 
     public function mostrarRegistrar(): void {
+        $this->verificarSesion();
         $categorias = $this->model->obtenerCategorias();
-        $errores    = [];
-        $datos      = [];
+        $errores = [];
+        $datos = [];
         require __DIR__ . '/../views/registrar.php';
     }
 
     public function registrar(): void {
-        $datos   = $this->sanitizar($_POST);
+        $this->verificarSesion();
+        $datos = $this->sanitizar($_POST);
         $errores = $this->validar($datos);
 
         if (empty($errores['codigo_inventario']) && $this->model->codigoExiste($datos['codigo_inventario'])) {
@@ -41,7 +52,8 @@ class EquipoController {
     }
 
     public function mostrarEditar(): void {
-        $id     = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+        $this->verificarSesion();
+        $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
         $equipo = $this->model->obtenerPorId($id);
 
         if (!$equipo) {
@@ -50,21 +62,15 @@ class EquipoController {
         }
 
         $categorias = $this->model->obtenerCategorias();
-        $errores    = [];
-        $datos      = $equipo;
+        $errores = [];
+        $datos = $equipo;
         require __DIR__ . '/../views/editar.php';
     }
 
     public function editar(): void {
-        $id     = isset($_POST['id_equipo']) ? (int)$_POST['id_equipo'] : 0;
-        $equipo = $this->model->obtenerPorId($id);
-
-        if (!$equipo) {
-            header('Location: index.php?action=equipos&error=no_encontrado');
-            exit;
-        }
-
-        $datos   = $this->sanitizar($_POST);
+        $this->verificarSesion();
+        $id = isset($_POST['id_equipo']) ? (int)$_POST['id_equipo'] : 0;
+        $datos = $this->sanitizar($_POST);
         $errores = $this->validar($datos, true);
 
         if (!empty($errores)) {
@@ -79,12 +85,11 @@ class EquipoController {
     }
 
     public function eliminar(): void {
+        $this->verificarSesion();
         $id = isset($_POST['id_equipo']) ? (int)$_POST['id_equipo'] : 0;
         if ($id > 0) {
             $this->model->eliminar($id);
             header('Location: index.php?action=equipos&eliminado=1');
-        } else {
-            header('Location: index.php?action=equipos&error=id_invalido');
         }
         exit;
     }
@@ -103,15 +108,8 @@ class EquipoController {
 
     private function validar(array $datos, bool $esEdicion = false): array {
         $errores = [];
-        if (!$esEdicion && empty($datos['codigo_inventario'])) {
-            $errores['codigo_inventario'] = 'El código es obligatorio.';
-        }
-        if (empty($datos['nombre'])) {
-            $errores['nombre'] = 'El nombre es obligatorio.';
-        }
-        if (empty($datos['id_categoria'])) {
-            $errores['id_categoria'] = 'Debe seleccionar un tipo.';
-        }
+        if (!$esEdicion && empty($datos['codigo_inventario'])) $errores['codigo_inventario'] = 'Requerido';
+        if (empty($datos['nombre'])) $errores['nombre'] = 'Requerido';
         return $errores;
     }
 }

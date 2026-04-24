@@ -4,11 +4,16 @@ require_once __DIR__ . '/../config/database.php';
 class AuthController {
 
     public function mostrarLogin() {
+        if (session_status() === PHP_SESSION_NONE) session_start();
+        // Si ya está logueado, mandarlo al dashboard directamente
+        if (isset($_SESSION['admin_id'])) {
+            header("Location: index.php?action=dashboard");
+            exit;
+        }
         include __DIR__ . '/../views/login.php';
     }
 
     public function login() {
-        // Limpiar cualquier salida accidental de PHP (espacios o advertencias)
         if (ob_get_length()) ob_clean();
         header('Content-Type: application/json');
 
@@ -21,7 +26,6 @@ class AuthController {
             $dbObj = new Database();
             $db = $dbObj->connect();
 
-            // Consulta exacta para Administrador
             $stmt = $db->prepare("SELECT id_admin, nombre, rol FROM Administrador WHERE email = ? AND password = ? AND estado = 'activo'");
             $stmt->bind_param("ss", $email, $password);
             $stmt->execute();
@@ -33,9 +37,8 @@ class AuthController {
                 $_SESSION['admin_rol'] = $user['rol'];
                 echo json_encode(["status" => "success"]);
             } else {
-                echo json_encode(["status" => "error", "message" => "Credenciales incorrectas o cuenta inactiva"]);
+                echo json_encode(["status" => "error", "message" => "Credenciales incorrectas"]);
             }
-            $db->close();
             exit;
         }
     }
@@ -57,7 +60,6 @@ class AuthController {
 
     public function logout() {
         if (session_status() === PHP_SESSION_NONE) session_start();
-        session_unset();
         session_destroy();
         header("Location: index.php?action=login");
         exit;
